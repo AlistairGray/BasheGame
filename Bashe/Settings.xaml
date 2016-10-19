@@ -1,0 +1,53 @@
+﻿<Window x:Class="Bashe.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bashe"
+        mc:Ignorable="d"
+        Title="Settings" Height="300" Width="300" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Margin" Value="5,5,5,5" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Количество предметов</Label>
+
+        <TextBox Name="tThingsCount" Grid.Row="1">10</TextBox>
+
+        <Label Grid.Row="2">Ограничение по времени (0 - без ограничений)</Label>
+
+        <TextBox Name="tTimeout" Grid.Row="3">0</TextBox>
+
+        <Label Grid.Row="4">Режим игры</Label>
+
+        <StackPanel Grid.Row="5">
+            <RadioButton Name="rbAI" GroupName="GameType">Компьютер</RadioButton>
+            <RadioButton Name="rbHuman"  GroupName="GameType">Человек</RadioButton>
+        </StackPanel>
+        
+        <Button Grid.Row="0" Grid.Column="1">Очистить</Button>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Click="OK_Onlick">ОК</Button>
+            <Button Click="Cancel_OnClick">Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\bin\Debug\Bashe New.exe.config
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New.csprojResolveAssemblyReference.cache
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\MainWindow.g.cs
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Settings.g.cs
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\App.g.cs
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New_MarkupCompile.cache
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New_MarkupCompile.lref
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\bin\Debug\Bashe New.exe
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\bin\Debug\Bashe New.pdb
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\MainWindow.baml
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Settings.baml
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New.g.resources
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe_New.Properties.Resources.resources
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New.csproj.GenerateResource.Cache
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New.exe
+C:\Users\Alist\OneDrive\Универ\C++\3 Курс\Bashe\Bashe New\obj\Debug\Bashe New.pdb
