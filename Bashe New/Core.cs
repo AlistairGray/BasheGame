@@ -51,6 +51,10 @@ namespace Bashe_New
                 //Игра с компьютером
                 Data.CurrentPlayerChanged += OnCurrentPlayerChanged;
             }
+            else if (Data.GameMode == GameMode.Human)
+            {
+                
+            }
 
             GameEnded += OnGameEnded;
 
@@ -58,17 +62,17 @@ namespace Bashe_New
 
 
             Data.GameStatus = GameStatus.Playing;
-            if (Data.TurnInterval > 0)
-            {
-                Timer = new System.Threading.Timer(OnTimerElapsed, null, 0, 1000);
-            }
+            //if (Data.TurnInterval > 0)
+            //{
+            //    Timer = new System.Threading.Timer(OnTimerElapsed, null, 0, 1000);
+            //}
         }
 
         private void Data_CurrentItemsCountChanged()
         {
             if (Data.CurrentItemsCount<=0)
             {
-                GameEnded.Invoke();
+                GameEnded?.Invoke();
             }
         }
 
@@ -89,13 +93,15 @@ namespace Bashe_New
             }
 
             winMessage += "победил!";
-            MessageBox.Show(null, winMessage, "Победа", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show(null, winMessage, "Победа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             Stop();
         }
 
+
         /// <summary>
-        /// Дествия при смене игрока
+        /// Дествия при смене игрока для того чтобы подменить реального второго игрока компьютером
         /// </summary>
         public void OnCurrentPlayerChanged()
         {
@@ -113,7 +119,7 @@ namespace Bashe_New
             if (Data.GameStatus != GameStatus.Stopped)
             {
                 Data.CurrentPlayerChanged -= OnCurrentPlayerChanged;
-
+                GameEnded -= OnGameEnded;
                 Data.GameStatus = GameStatus.Stopped;
             }
         }
@@ -134,8 +140,10 @@ namespace Bashe_New
         /// <param name="number">Количество палочек для вычета</param>
         public void GetItems(int number)
         {
-            Data.CurrentItemsCount -= number;
-            ChangeCurrentPlayer();
+            if (Data.GameStatus == GameStatus.Playing)
+            {       
+                Data.CurrentItemsCount -= number;
+            }
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace Bashe_New
             EnableDisableButtons();
             timer.Interval = 1;
             timer.Elapsed += Timer_Elapsed;
+            // Запуск менеджера отрисовки
+            timer.Start();
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -56,11 +59,26 @@ namespace Bashe_New
 
         private void NewGame()
         {
-            EnableDisableButtons();
+
+            // Рисует предметы
             DrawItems();
+
+            core.ChangeGameMode(rbAI.IsChecked.Value ? GameMode.Ai : GameMode.Human);
+            bPlayPause.Content = "Пауза";
+            core.GameEnded+= CoreOnGameEnded;
+            miSettings.IsEnabled = !miSettings.IsEnabled;
+
+            // Переводит игру в статус Playing
             core.Start();
-            timer.Start();
-            bPlayPause.Content = "Pause";
+        }
+
+        private void CoreOnGameEnded()
+        {
+            bPlayPause.Content = "Новая игра";
+            EnableDisableButtons();
+            core.GameEnded -= CoreOnGameEnded;
+            miSettings.IsEnabled = !miSettings.IsEnabled;
+
         }
 
         private void PlayPause_OnClick(object sender, RoutedEventArgs e)
@@ -68,19 +86,15 @@ namespace Bashe_New
             if (Data.GameStatus == GameStatus.Stopped)
             {
                 NewGame();
-                return;
             }
             else if (Data.GameStatus == GameStatus.Playing)
             {
-                bPlayPause.Content = "Play";
+                bPlayPause.Content = "Продолжить";
                 core.PlayPause();
-                timer.Stop();
-                return;
             }
             else
             {
                 core.PlayPause();
-                timer.Start();
                 bPlayPause.Content = "Pause";
 
             }
@@ -126,7 +140,6 @@ namespace Bashe_New
             bOne.IsEnabled = !bOne.IsEnabled;
             bTwo.IsEnabled = !bTwo.IsEnabled;
             bThree.IsEnabled = !bThree.IsEnabled;
-            miSettings.IsEnabled = !miSettings.IsEnabled;
 
         }
 
@@ -134,9 +147,15 @@ namespace Bashe_New
         {
             var button = sender as Button;
             core.GetItems(int.Parse(button.Tag.ToString()));
+            core.ChangeCurrentPlayer();
             var itemsCount = Data.CurrentItemsCount;
         }
 
         Timer timer = new Timer();
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            timer.Stop();
+        }
     }
 }
