@@ -84,12 +84,12 @@ namespace Bashe_New
             if (currentPlayer == Player.One)
             {
                 Data.Score2++;
-                winMessage += "2 ";
+                winMessage += "1 ";
             }
             else
             {
                 Data.Score1++;
-                winMessage += "1 ";
+                winMessage += "2 ";
             }
 
             winMessage += "победил!";
@@ -107,9 +107,29 @@ namespace Bashe_New
         {
             if (Data.CurrentPlayer == Player.Two)
             {
-                var Random = new Random(DateTime.Now.Millisecond);
-                int numberOfItemsToGet = Random.Next(1, 3);
-                GetItems(numberOfItemsToGet);
+                if (Data.CurrentItemsCount <= 3)
+                {
+                    GetItems(Data.CurrentItemsCount);
+                }
+                else if (Data.CurrentItemsCount % 4 == 0)
+                {
+                    GetItems(4);
+                }
+                else
+                {
+                    int temp = Data.CurrentItemsCount;
+
+                    while (temp % 4 != 0)
+                    {
+                        temp--;
+                    }
+                    GetItems(Data.CurrentItemsCount - temp);
+                }
+
+                //var Random = new Random(DateTime.Now.Millisecond);
+                //int numberOfItemsToGet = Random.Next(1, 3);
+
+                //GetItems(numberOfItemsToGet);
                 ChangeCurrentPlayer();
             }
         }
